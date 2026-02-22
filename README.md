@@ -1,20 +1,21 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Demo Prototype Project
 
-# Run and deploy your AI Studio app
+⚠️ Disclaimer
 
-This contains everything you need to run your app locally.
+This project is created for **demo and prototype purposes only**.
 
-View your app in AI Studio: https://ai.studio/apps/ae74b609-22ff-4aeb-8ded-767c033127d3
+It is not intended for production use.
 
-## Run Locally
+Please stay away from using this project in any real-world or commercial environment.
 
-**Prerequisites:**  Node.js
+---
 
+## Purpose
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+This repository is developed to demonstrate features, concepts, and functionality for testing and presentation purposes only.
+
+---
+
+## Status
+
+🚧 Prototype / Experimental  
