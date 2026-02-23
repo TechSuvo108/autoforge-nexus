@@ -10,7 +10,7 @@ const Compliance = () => {
         </div>
         <h1 className="text-4xl font-bold mb-6">Compliance & Traceability</h1>
         <p className="text-zinc-400 text-lg">
-          AutoForge Nexus is designed from the ground up to support safety-critical development standards like ISO 26262 and ASPICE.
+          Tata Elxsi Teliport DEMO is designed from the ground up to support safety-critical development standards like ISO 26262 and ASPICE.
         </p>
       </div>
 
@@ -35,7 +35,7 @@ const Compliance = () => {
           <FileText className="w-10 h-10 text-emerald-500 mb-6" />
           <h2 className="text-2xl font-bold mb-4">ASPICE Traceability</h2>
           <p className="text-zinc-400 leading-relaxed mb-6">
-            Maintain a perfect 1:1 mapping between requirements, blueprints, source code, and test results. AutoForge Nexus automatically generates the traceability matrix required for ASPICE Level 2/3 audits.
+            Maintain a perfect 1:1 mapping between requirements, blueprints, source code, and test results. Tata Elxsi Teliport DEMO automatically generates the traceability matrix required for ASPICE Level 2/3 audits.
           </p>
           <ul className="space-y-3">
             {['Bidirectional Linking', 'Impact Analysis', 'Audit-Ready Exports'].map(item => (
@@ -71,7 +71,7 @@ const Compliance = () => {
           <div>
             <h4 className="font-bold text-white mb-2">Certification Disclaimer</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              While AutoForge Nexus provides tools to automate compliance tasks, final certification remains the responsibility of the vehicle manufacturer and authorized auditing bodies. Our platform serves as a productivity accelerator and documentation engine for your safety-critical workflows.
+              While Tata Elxsi Teliport DEMO provides tools to automate compliance tasks, final certification remains the responsibility of the vehicle manufacturer and authorized auditing bodies. Our platform serves as a productivity accelerator and documentation engine for your safety-critical workflows.
             </p>
           </div>
         </div>

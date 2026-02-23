@@ -121,13 +121,13 @@ const LandingPage = () => {
                 <div className="w-3 h-3 rounded-full bg-green-500/50" />
               </div>
               <div className="ml-4 px-3 py-1 rounded bg-black/30 text-xs text-zinc-500 font-mono">
-                autoforge-nexus.io/live-demo
+                tata-elxsi-teliport-demo.io/live-demo
               </div>
             </div>
             <div className="aspect-video bg-black relative flex items-center justify-center">
-              <img 
-                src="https://picsum.photos/seed/sdv/1280/720" 
-                alt="SDV Dashboard Preview" 
+              <img
+                src="https://picsum.photos/seed/sdv/1280/720"
+                alt="SDV Dashboard Preview"
                 className="absolute inset-0 w-full h-full object-cover opacity-40"
                 referrerPolicy="no-referrer"
               />

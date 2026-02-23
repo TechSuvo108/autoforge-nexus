@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { 
-  Zap, 
-  Activity, 
-  Battery, 
-  Thermometer, 
-  Wind, 
+import {
+  Zap,
+  Activity,
+  Battery,
+  Thermometer,
+  Wind,
   ChevronRight,
   ArrowRight,
   Info
@@ -21,7 +21,7 @@ const VehicleHealthUseCase = () => {
         </div>
         <h1 className="text-4xl font-bold mb-6">Vehicle Health & Diagnostics</h1>
         <p className="text-zinc-400 text-lg leading-relaxed">
-          See how AutoForge Nexus enables rapid development of complex diagnostic services. This demo showcases a real-time health monitoring microservice generated from a single requirement.
+          See how Tata Elxsi Teliport DEMO enables rapid development of complex diagnostic services. This demo showcases a real-time health monitoring microservice generated from a single requirement.
         </p>
       </div>
 
@@ -35,7 +35,7 @@ const VehicleHealthUseCase = () => {
                   <Zap className="w-6 h-6 text-black" />
                 </div>
                 <div>
-                  <h3 className="text-white font-bold">Nexus OS</h3>
+                  <h3 className="text-white font-bold">Teliport OS</h3>
                   <p className="text-[10px] text-zinc-500">v2.4.0-stable</p>
                 </div>
               </div>

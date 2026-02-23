@@ -26,7 +26,7 @@ const Docs = () => {
           <div>
             <h3 className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-4">API Reference</h3>
             <ul className="space-y-2">
-              {['Nexus CLI', 'REST API', 'SDKs'].map(item => (
+              {['Teliport CLI', 'REST API', 'SDKs'].map(item => (
                 <li key={item} className="text-sm text-zinc-400 hover:text-emerald-500 cursor-pointer">{item}</li>
               ))}
             </ul>
@@ -38,9 +38,9 @@ const Docs = () => {
       <main className="flex-1 p-8 md:p-12 max-w-4xl">
         <div className="relative mb-12">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
-          <input 
-            type="text" 
-            placeholder="Search documentation..." 
+          <input
+            type="text"
+            placeholder="Search documentation..."
             className="w-full bg-zinc-900 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-sm focus:outline-none focus:border-emerald-500 transition-all"
           />
         </div>
@@ -48,14 +48,14 @@ const Docs = () => {
         <div className="prose prose-invert prose-emerald max-w-none">
           <h1>Documentation</h1>
           <p className="text-xl text-zinc-400">
-            Learn how to build, test, and deploy SDV services with AutoForge Nexus.
+            Learn how to build, test, and deploy SDV services with Tata Elxsi Teliport DEMO.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 not-prose my-12">
             {[
               { title: 'Quick Start', desc: 'Get up and running in 15 minutes.', icon: Zap },
               { title: 'API Reference', desc: 'Detailed API and SDK documentation.', icon: Code },
-              { title: 'CLI Tools', desc: 'Master the Nexus command line.', icon: Terminal },
+              { title: 'CLI Tools', desc: 'Master the Teliport command line.', icon: Terminal },
               { title: 'Best Practices', desc: 'Guidelines for MISRA/ASPICE.', icon: Book },
             ].map((card) => (
               <div key={card.title} className="p-6 rounded-2xl bg-zinc-900 border border-white/10 hover:border-emerald-500/50 transition-all group cursor-pointer">
@@ -71,7 +71,7 @@ const Docs = () => {
 
           <h2>15-Minute Tutorial</h2>
           <p>
-            In this tutorial, we'll walk through the entire AutoForge Nexus pipeline—from a plain-English requirement to a live CARLA-deployed container.
+            In this tutorial, we'll walk through the entire Tata Elxsi Teliport DEMO pipeline—from a plain-English requirement to a live CARLA-deployed container.
           </p>
           <ol>
             <li><strong>Define:</strong> Start in the Requirements Studio and ask the AI to "Create an Adaptive Cruise Control service".</li>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Cpu, 
-  Activity, 
-  ShieldCheck, 
-  BookOpen, 
+import {
+  LayoutDashboard,
+  FileText,
+  Cpu,
+  Activity,
+  ShieldCheck,
+  BookOpen,
   Mail,
   ChevronRight,
   Menu,
@@ -38,12 +38,12 @@ export const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 text-black font-bold">
-                A
+                T
               </div>
-              <span className="text-xl font-bold tracking-tight text-white">AutoForge <span className="text-emerald-500">Nexus</span></span>
+              <span className="text-xl font-bold tracking-tight text-white">Tata Elxsi <span className="text-emerald-500">Teliport DEMO</span></span>
             </Link>
           </div>
-          
+
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navItems.slice(0, 5).map((item) => (
@@ -52,8 +52,8 @@ export const Navbar = () => {
                   to={item.path}
                   className={cn(
                     "px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                    location.pathname === item.path 
-                      ? "bg-emerald-500/10 text-emerald-500" 
+                    location.pathname === item.path
+                      ? "bg-emerald-500/10 text-emerald-500"
                       : "text-zinc-400 hover:text-white hover:bg-white/5"
                   )}
                 >
@@ -96,8 +96,8 @@ export const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-3 py-2 rounded-md text-base font-medium",
-                    location.pathname === item.path 
-                      ? "bg-emerald-500/10 text-emerald-500" 
+                    location.pathname === item.path
+                      ? "bg-emerald-500/10 text-emerald-500"
                       : "text-zinc-400 hover:text-white hover:bg-white/5"
                   )}
                 >
@@ -122,9 +122,9 @@ export const Footer = () => (
         <div className="col-span-1 md:col-span-2">
           <Link to="/" className="flex items-center space-x-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 text-black font-bold text-sm">
-              A
+              T
             </div>
-            <span className="text-xl font-bold tracking-tight text-white">AutoForge Nexus</span>
+            <span className="text-xl font-bold tracking-tight text-white">Tata Elxsi Teliport DEMO</span>
           </Link>
           <p className="mt-4 text-sm text-zinc-400 max-w-xs">
             The GenAI-powered pipeline for compliant, deployable SDV services. Turn requirements into road-ready code.
@@ -150,7 +150,7 @@ export const Footer = () => (
         </div>
       </div>
       <div className="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p className="text-xs text-zinc-500">© 2026 AutoForge Nexus. All rights reserved.</p>
+        <p className="text-xs text-zinc-500">© 2026 Tata Elxsi Teliport DEMO. All rights reserved.</p>
         <div className="mt-4 flex space-x-6 md:mt-0">
           <a href="#" className="text-zinc-500 hover:text-white transition-colors">Twitter</a>
           <a href="#" className="text-zinc-500 hover:text-white transition-colors">GitHub</a>

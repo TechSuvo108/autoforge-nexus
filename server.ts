@@ -42,7 +42,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`AutoForge Nexus Server running on http://localhost:${PORT}`);
+    console.log(`Tata Elxsi Teliport DEMO Server running on http://localhost:${PORT}`);
   });
 }
 
