@@ -7,8 +7,12 @@ export class GeminiService {
 
     private get keys(): string[] {
         if (!this._keys) {
-            const keysFromEnv = process.env.GEMINI_API_KEYS || process.env.GEMINI_API_KEY || "";
-            this._keys = keysFromEnv.split(",").map((k) => k.trim()).filter((k) => k.length > 0);
+            const primary = process.env.GEMINI_API_KEY || "";
+            const backup1 = process.env.BACKUP_GEMINI_API_KEY || "";
+            const backup2 = process.env.BACKUP2_GEMINI_API_KEY || "";
+
+            this._keys = [primary, backup1, backup2].filter(k => k.trim().length > 0);
+
             if (this._keys.length === 0) {
                 console.warn("No Gemini API keys found in environment variables.");
             }
