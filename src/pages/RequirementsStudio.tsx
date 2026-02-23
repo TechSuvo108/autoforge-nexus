@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Send, 
-  Bot, 
-  User, 
-  Plus, 
-  Trash2, 
-  AlertTriangle, 
+import {
+  Send,
+  Bot,
+  User,
+  Plus,
+  Trash2,
+  AlertTriangle,
   CheckCircle2,
   FileText,
   Settings,
@@ -59,7 +59,7 @@ const RequirementsStudio = () => {
       const response = await generateRequirements(input);
       const assistantMsg: Message = { id: (Date.now() + 1).toString(), role: 'assistant', content: response };
       setMessages(prev => [...prev, assistantMsg]);
-      
+
       // Mock adding a requirement if the response seems to define one
       if (input.toLowerCase().includes('requirement') || input.length > 20) {
         const newReq: Requirement = {
@@ -70,8 +70,14 @@ const RequirementsStudio = () => {
         };
         setRequirements(prev => [...prev, newReq]);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: `Error: ${error.message}. Please check your API key and server connection.`
+      };
+      setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsTyping(false);
     }
@@ -175,8 +181,8 @@ const RequirementsStudio = () => {
                 <span className="text-[10px] font-mono text-zinc-500">{req.id}</span>
                 <div className={cn(
                   "px-2 py-0.5 rounded text-[10px] font-bold uppercase",
-                  req.status === 'reviewed' ? "bg-emerald-500/10 text-emerald-500" : 
-                  req.status === 'conflict' ? "bg-red-500/10 text-red-500" : "bg-zinc-800 text-zinc-400"
+                  req.status === 'reviewed' ? "bg-emerald-500/10 text-emerald-500" :
+                    req.status === 'conflict' ? "bg-red-500/10 text-red-500" : "bg-zinc-800 text-zinc-400"
                 )}>
                   {req.status}
                 </div>
