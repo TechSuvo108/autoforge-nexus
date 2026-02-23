@@ -1,42 +1,31 @@
-import { GoogleGenAI, Type } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
-
-export async function generateRequirements(prompt: string, history: any[] = []) {
-  const model = "gemini-3.1-pro-preview";
-  
-  const systemInstruction = `You are an expert SDV (Software Defined Vehicle) Systems Engineer. 
-  Your goal is to help users define vehicle features into structured requirements compliant with ISO 26262 and ASPICE.
-  Ask clarifying questions about safety levels (ASIL), performance, and hardware constraints.
-  Return responses in a helpful, professional tone.`;
-
-  const chat = ai.chats.create({
-    model,
-    config: { systemInstruction }
+export async function generateRequirements(prompt: string) {
+  const response = await fetch('/api/ai/requirements', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt })
   });
 
-  // In a real app we'd pass history, for now just simple message
-  const response = await chat.sendMessage({ message: prompt });
-  return response.text;
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || 'Failed to generate requirements');
+  }
+
+  const data = await response.json();
+  return data.text;
 }
 
 export async function generateCode(requirement: string, language: 'python' | 'cpp' | 'rust' = 'python') {
-  const model = "gemini-3.1-pro-preview";
-  
-  const prompt = `Generate a MISRA-compliant ${language} microservice for the following SDV requirement:
-  "${requirement}"
-  
-  Include:
-  1. The code implementation.
-  2. RAG Citations (simulated) for MISRA rules applied.
-  3. A brief explanation of the architecture.
-  
-  Format the output as Markdown.`;
-
-  const response = await ai.models.generateContent({
-    model,
-    contents: prompt
+  const response = await fetch('/api/ai/code', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ requirement, language })
   });
 
-  return response.text;
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || 'Failed to generate code');
+  }
+
+  const data = await response.json();
+  return data.text;
 }
