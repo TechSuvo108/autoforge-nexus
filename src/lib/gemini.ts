@@ -53,12 +53,12 @@ export class GeminiService {
                         continue;
                     } else {
                         console.error("[GeminiService] All API keys have been exhausted for this request.");
+                        throw new Error("All configured Gemini API keys (including backups) have exceeded their quotas or rate limits. Please try again later.");
                     }
                 }
                 throw error;
             }
         }
-        throw new Error("All Gemini API keys exhausted or rate limited.");
     }
 
     public async sendMessage(model: string, config: any, message: string): Promise<any> {
@@ -78,12 +78,12 @@ export class GeminiService {
                         continue;
                     } else {
                         console.error("[GeminiService] All API keys have been exhausted for this request.");
+                        throw new Error("All configured Gemini API keys (including backups) have exceeded their quotas or rate limits. Please try again later.");
                     }
                 }
                 throw error;
             }
         }
-        throw new Error("All Gemini API keys exhausted or rate limited.");
     }
 
     private isQuotaError(error: any): boolean {
