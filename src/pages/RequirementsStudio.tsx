@@ -71,19 +71,12 @@ const RequirementsStudio = () => {
         setRequirements(prev => [...prev, newReq]);
       }
     } catch (error: any) {
-      console.error(error);
-      let content = `Error: ${error.message}. Please check your API key and server connection.`;
-
-      if (error.message.includes('429') || error.message.includes('Quota exceeded') || error.message.includes('RESOURCE_EXHAUSTED')) {
-        content = "Google Gemini API rate limit exceeded. Please wait a moment and try again, or check your API quota in Google AI Studio.";
-      } else if (error.message.includes('400') || error.message.includes('API key not valid')) {
-        content = "Your API key is invalid. Please verify the key in your .env file.";
-      }
+      console.error("AI Assistant Error:", error);
 
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content
+        content: "Since this is a demo website, the chat functionality may occasionally be unavailable."
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
