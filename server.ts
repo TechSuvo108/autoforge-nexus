@@ -2,7 +2,7 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
-import { GoogleGenAI } from "@google/genai";
+import { geminiService } from "./src/lib/gemini.js";
 import "dotenv/config";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,8 +17,6 @@ async function startServer() {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
   });
 
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
-
   app.use(express.json());
 
   app.post("/api/ai/requirements", async (req, res) => {
@@ -31,12 +29,11 @@ async function startServer() {
       Ask clarifying questions about safety levels (ASIL), performance, and hardware constraints.
       Return responses in a helpful, professional tone.`;
 
-      const chat = ai.chats.create({
+      const response = await geminiService.sendMessage(
         model,
-        config: { systemInstruction }
-      });
-
-      const response = await chat.sendMessage({ message: prompt });
+        { systemInstruction },
+        prompt
+      );
       res.json({ text: response.text });
     } catch (error: any) {
       console.error("Gemini Error:", error);
@@ -59,10 +56,10 @@ async function startServer() {
       
       Format the output as Markdown.`;
 
-      const response = await ai.models.generateContent({
+      const response = await geminiService.generateContent(
         model,
-        contents: prompt
-      });
+        prompt
+      );
 
       res.json({ text: response.text });
     } catch (error: any) {

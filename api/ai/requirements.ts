@@ -1,6 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
+import { geminiService } from "../../src/lib/gemini.js";
 
 export default async function handler(req: any, res: any) {
     if (req.method !== 'POST') {
@@ -16,12 +14,11 @@ export default async function handler(req: any, res: any) {
     Ask clarifying questions about safety levels (ASIL), performance, and hardware constraints.
     Return responses in a helpful, professional tone.`;
 
-        const chat = ai.chats.create({
+        const response = await geminiService.sendMessage(
             model,
-            config: { systemInstruction }
-        });
-
-        const response = await chat.sendMessage({ message: prompt });
+            { systemInstruction },
+            prompt
+        );
         res.status(200).json({ text: response.text });
     } catch (error: any) {
         console.error("Gemini Error:", error);

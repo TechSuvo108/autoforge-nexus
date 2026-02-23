@@ -1,6 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
+import { geminiService } from "../../src/lib/gemini.js";
 
 export default async function handler(req: any, res: any) {
     if (req.method !== 'POST') {
@@ -21,10 +19,10 @@ export default async function handler(req: any, res: any) {
     
     Format the output as Markdown.`;
 
-        const response = await ai.models.generateContent({
+        const response = await geminiService.generateContent(
             model,
-            contents: prompt
-        });
+            prompt
+        );
 
         res.status(200).json({ text: response.text });
     } catch (error: any) {
