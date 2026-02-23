@@ -27,30 +27,28 @@ export class GeminiService {
         return this.keys[this.currentKeyIndex] || "";
     }
 
-    private rotateKey(): boolean {
-        if (this.currentKeyIndex < this.keys.length - 1) {
-            this.currentKeyIndex++;
-            console.log(`[GeminiService] Rotating to API key index ${this.currentKeyIndex}`);
-            this._ai = new GoogleGenAI({ apiKey: this.getCurrentKey() });
-            return true;
-        }
-        console.error("[GeminiService] All API keys have been exhausted.");
-        return false;
+    private rotateKey(): void {
+        this.currentKeyIndex = (this.currentKeyIndex + 1) % this.keys.length;
+        console.log(`[GeminiService] Rotating to API key index ${this.currentKeyIndex}`);
+        this._ai = new GoogleGenAI({ apiKey: this.getCurrentKey() });
     }
 
     public async generateContent(model: string, contents: any, config?: any): Promise<any> {
         let attempts = 0;
         const maxAttempts = this.keys.length;
 
-        while (attempts <= maxAttempts) {
+        while (attempts < maxAttempts) {
             try {
                 return await this.ai.models.generateContent({ model, contents, config });
             } catch (error: any) {
+                attempts++;
                 if (this.isQuotaError(error)) {
                     console.warn(`[GeminiService] Quota/Rate limit encountered with key index ${this.currentKeyIndex}.`);
-                    if (this.rotateKey()) {
-                        attempts++;
+                    if (attempts < maxAttempts) {
+                        this.rotateKey();
                         continue;
+                    } else {
+                        console.error("[GeminiService] All API keys have been exhausted for this request.");
                     }
                 }
                 throw error;
@@ -63,16 +61,19 @@ export class GeminiService {
         let attempts = 0;
         const maxAttempts = this.keys.length;
 
-        while (attempts <= maxAttempts) {
+        while (attempts < maxAttempts) {
             try {
                 const chat = this.ai.chats.create({ model, config });
                 return await chat.sendMessage({ message });
             } catch (error: any) {
+                attempts++;
                 if (this.isQuotaError(error)) {
                     console.warn(`[GeminiService] Quota/Rate limit encountered with key index ${this.currentKeyIndex}.`);
-                    if (this.rotateKey()) {
-                        attempts++;
+                    if (attempts < maxAttempts) {
+                        this.rotateKey();
                         continue;
+                    } else {
+                        console.error("[GeminiService] All API keys have been exhausted for this request.");
                     }
                 }
                 throw error;
